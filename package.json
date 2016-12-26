@@ -1,0 +1,47 @@
+{
+  "name": "angularplate-material",
+  "version": "0.0.1",
+  "description": "easiest angular boilerplate using material design",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server -p 1000 -c 10 -o"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yozawiratama/angularplate-material.git"
+  },
+  "keywords": [
+    "angular",
+    "boilerplate",
+    "material"
+  ],
+  "author": "Yoza Wiratama <y_wiratama@yahoo.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yozawiratama/angularplate-material/issues"
+  },
+  "homepage": "https://github.com/yozawiratama/angularplate-material#readme",
+  "dependencies": {
+    "angular": "^1.5.10",
+    "angular-animate": "^1.5.10",
+    "angular-aria": "^1.5.10",
+    "angular-bootstrap-contextmenu": "^0.9.8",
+    "angular-loading-bar": "^0.9.0",
+    "angular-markdown-it": "^0.6.1",
+    "angular-material": "^1.1.1",
+    "angular-messages": "^1.6.1",
+    "angular-sanitize": "^1.5.8",
+    "angular-touch": "^1.5.8",
+    "angular-ui-router": "^0.3.2",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.1.1",
+    "markdown-it": "^7.0.1",
+    "ng-grid": "^2.0.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-count": "^0.3.0",
+    "gulp-watch": "^4.3.11"
+  }
+}
