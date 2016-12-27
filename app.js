@@ -8,6 +8,7 @@ var app = angular.module('app', [
     'ngEnter',
     'ui.router',
     'ngAnimate',
+    'ngMaterial',
     'angular-loading-bar'
 ]);
 app.run(

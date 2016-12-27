@@ -1,7 +1,18 @@
-Dashboard with container fluid
-
-<ul class="nav nav-pills" role="tablist">
-    <li role="presentation" class="active"><a href="#">Contacts <span class="badge">{{contact}}</span></a></li>
-    <li role="presentation" class="active"><a href="#">Feeds <span class="badge">{{feed}}</span></a></li>
-    <li role="presentation" class="active"><a href="#">Messages <span class="badge">{{message}}</span></a></li>
-</ul>
+<div flex layout="row">
+    <div flex layout="row">
+        <md-card md-theme="default" md-theme-watch>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Sales</span>
+                    <span class="md-subhead">$ 1.000.000</span>
+                </md-card-title-text>
+                <md-card-title-media>
+                    <div class="md-media-sm card-media"></div>
+                </md-card-title-media>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button>See More</md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
+</div>
