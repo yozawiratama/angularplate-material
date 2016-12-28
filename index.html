@@ -14,7 +14,7 @@
     <div flex="10" layout="column" ng-controller="navCtrl" layout="row" ng-cloak>
         <section layout="row" flex>
             <md-sidenav class="md-sidenav-left md-whiteframe-4dp" md-component-id="sidenavLeft">
-                <md-toolbar class="md-theme-light">
+                <md-toolbar>
                     <h1 class="md-toolbar-tools">Angularplate</h1>
                 </md-toolbar>
                 <md-content ng-controller="RightCtrl">
@@ -51,7 +51,7 @@
                         </h2>
                         <span flex></span>
                         <md-button class="md-icon-button" aria-label="Favorite">
-                            <i class="material-icons" style="color: deeppink;" ng-click="showSimpleToast()">favorite</i>
+                            <i class="material-icons" ng-click="showSimpleToast()">favorite</i>
                         </md-button>
                         <md-menu>
                             <md-button aria-label="Open phone interactions menu" class="md-icon-button"
