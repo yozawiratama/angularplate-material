@@ -19,8 +19,10 @@ angular.module('module.user', [
                     .state('user.list', {
                         url: '',
                         templateUrl: 'views/user/list.html',
-                        controller: ['$scope', '$state',
-                            function ($scope, $state) {
+                        controller: ['$scope', '$rootScope','$state',
+                            function ($scope, $rootScope,$state) {
+                                $rootScope.pageTitle = 'User List';
+                                console.log($rootScope.pageTitle);
                                 $scope.users = [
                                     {
                                         name: { first: 'Yoza', last:'Wiratama' },
@@ -33,7 +35,12 @@ angular.module('module.user', [
                                     {
                                         name: { first: 'Kailan', last:'Batrisyia' },
                                         job : 'Engineer'
-                                    }];
+                                    },
+                                    {
+                                        name: { first: 'Leung', last:'Arashi' },
+                                        job : 'Programmer'
+                                    }
+                                ];
 
 
                                 $scope.selectedUserIndex = undefined;

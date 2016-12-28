@@ -10,125 +10,120 @@
     <title ng-bind="$state.current.name + ' - Boilerplate'"> - Boilerplate</title>
 </head>
 <body ng-cloak>
-<div ng-controller="navCtrl" layout="row" ng-cloak>
+<div layout="column" layout-fill>
+    <div flex="10" layout="column" ng-controller="navCtrl" layout="row" ng-cloak>
+        <section layout="row" flex>
+            <md-sidenav class="md-sidenav-left md-whiteframe-4dp" md-component-id="sidenavLeft">
+                <md-toolbar class="md-theme-light">
+                    <h1 class="md-toolbar-tools">Angularplate</h1>
+                </md-toolbar>
+                <md-content ng-controller="RightCtrl">
+                    <md-list flex class="padding:0">
+                        <md-list-item class="md-2-line" ng-click="$state.go('home.index');toggleRight()">
+                            <a class="md-list-item-text" layout="column">
+                                <h4>Home</h4>
+                            </a>
+                        </md-list-item>
+                        <md-list-item class="md-2-line" ng-click="$state.go('dashboard.index');toggleRight()">
+                            <a class="md-list-item-text" layout="column">
+                                <h4>Dashboard</h4>
+                            </a>
+                        </md-list-item>
+                        <md-divider></md-divider>
+                        <md-subheader class="md-no-sticky">User</md-subheader>
+                        <md-list-item class="md-2-line" ng-click="$state.go('user.list');toggleRight()">
+                            <div class="md-list-item-text" layout="column">
+                                <h4>List</h4>
+                            </div>
+                        </md-list-item>
+                    </md-list>
+                </md-content>
 
-    <section layout="row" flex>
-        <md-sidenav class="md-sidenav-left md-whiteframe-4dp" md-component-id="sidenavLeft">
-
-            <md-toolbar class="md-theme-light">
-                <h1 class="md-toolbar-tools">Angularplate</h1>
-            </md-toolbar>
-            <md-content ng-controller="RightCtrl">
-                <md-list flex class="padding:0">
-                    <md-list-item class="md-2-line" ng-click="$state.go('home.index')">
-                        <a class="md-list-item-text" layout="column">
-                            <h4>Home</h4>
-                        </a>
-                    </md-list-item>
-                    <md-list-item class="md-2-line" ng-click="$state.go('dashboard.index')">
-                        <a class="md-list-item-text" layout="column">
-                            <h4>Dashboard</h4>
-                        </a>
-                    </md-list-item>
-                    <md-divider></md-divider>
-                    <md-subheader class="md-no-sticky">User</md-subheader>
-                    <md-list-item class="md-2-line" ng-click="$state.go('user.list')">
-                        <div class="md-list-item-text" layout="column">
-                            <h4>List</h4>
-                        </div>
-                    </md-list-item>
-                </md-list>
-            </md-content>
-
-        </md-sidenav>
-        <div flex>
-            <md-toolbar class="md-hue-2">
-                <div class="md-toolbar-tools">
-                    <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleRight()">
-                        <i class="material-icons">menu</i>
-                    </md-button>
-                    <h2>
-                        <span>{{state}}</span>
-                    </h2>
-                    <span flex></span>
-                    <md-button class="md-icon-button" aria-label="Favorite">
-                        <i class="material-icons" style="color: deeppink;" ng-click="showSimpleToast()">favorite</i>
-                    </md-button>
-                    <md-menu>
-                        <md-button aria-label="Open phone interactions menu" class="md-icon-button"
-                                   ng-click="openMenu($mdOpenMenu, $event)">
-                            <i class="material-icons">call</i>
+            </md-sidenav>
+            <div flex>
+                <md-toolbar class="md-hue-2">
+                    <div class="md-toolbar-tools">
+                        <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleRight()">
+                            <i class="material-icons">menu</i>
                         </md-button>
-                        <md-menu-content width="4">
-                            <md-menu-item>
-                                <md-button>
-                                    <i class="material-icons">dialpad</i>
-                                    Redial
-                                </md-button>
-                            </md-menu-item>
-                            <md-menu-item>
-                                <md-button disabled="disabled">
-                                    <i class="material-icons">voicemail</i>
-                                    Check voicemail
-                                </md-button>
-                            </md-menu-item>
-                            <md-menu-divider></md-menu-divider>
-                            <md-menu-item>
-                                <md-button>
-                                    <i class="material-icons">notifications off</i>
-                                    Disabled notifications
-                                </md-button>
-                            </md-menu-item>
-                        </md-menu-content>
-                    </md-menu>
-                    <md-menu ng-show="isAuthenticated">
-                        <md-button aria-label="Yoza Wiratama" ng-click="openMenu($mdOpenMenu, $event)">
-                            Yoza Wiratama
+                        <h2>
+                            <span>{{state}}</span>
+                        </h2>
+                        <span flex></span>
+                        <md-button class="md-icon-button" aria-label="Favorite">
+                            <i class="material-icons" style="color: deeppink;" ng-click="showSimpleToast()">favorite</i>
                         </md-button>
-                        <md-menu-content width="4">
-                            <md-menu-item>
-                                <md-button>
-                                    <i class="material-icons">face</i>
-                                    Profile
-                                </md-button>
-                            </md-menu-item>
-                            <md-menu-item>
-                                <md-button disabled="disabled">
-                                    <i class="material-icons">settings</i>
-                                    Settings
-                                </md-button>
-                            </md-menu-item>
-                            <md-menu-divider></md-menu-divider>
-                            <md-menu-item>
-                                <md-button ng-click="logout()">
-                                    Logout
-                                </md-button>
-                            </md-menu-item>
-                        </md-menu-content>
-                    </md-menu>
+                        <md-menu>
+                            <md-button aria-label="Open phone interactions menu" class="md-icon-button"
+                                       ng-click="openMenu($mdOpenMenu, $event)">
+                                <i class="material-icons">call</i>
+                            </md-button>
+                            <md-menu-content width="4">
+                                <md-menu-item>
+                                    <md-button>
+                                        <i class="material-icons">dialpad</i>
+                                        Redial
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-item>
+                                    <md-button disabled="disabled">
+                                        <i class="material-icons">voicemail</i>
+                                        Check voicemail
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-divider></md-menu-divider>
+                                <md-menu-item>
+                                    <md-button>
+                                        <i class="material-icons">notifications off</i>
+                                        Disabled notifications
+                                    </md-button>
+                                </md-menu-item>
+                            </md-menu-content>
+                        </md-menu>
+                        <md-menu ng-show="isAuthenticated">
+                            <md-button aria-label="Yoza Wiratama" ng-click="openMenu($mdOpenMenu, $event)">
+                                Yoza Wiratama
+                            </md-button>
+                            <md-menu-content width="4">
+                                <md-menu-item>
+                                    <md-button>
+                                        <i class="material-icons">face</i>
+                                        Profile
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-item>
+                                    <md-button disabled="disabled">
+                                        <i class="material-icons">settings</i>
+                                        Settings
+                                    </md-button>
+                                </md-menu-item>
+                                <md-menu-divider></md-menu-divider>
+                                <md-menu-item>
+                                    <md-button ng-click="logout()">
+                                        Logout
+                                    </md-button>
+                                </md-menu-item>
+                            </md-menu-content>
+                        </md-menu>
 
-                    <md-button ng-show="!isAuthenticated" ng-click="showLoginDialog($event)" class="md-raised" aria-label="Login">
-                        Login
-                    </md-button>
+                        <md-button ng-show="!isAuthenticated" ng-click="showLoginDialog($event)" class="md-raised"
+                                   aria-label="Login">
+                            Login
+                        </md-button>
 
-                    <md-button class="md-icon-button" aria-label="More">
-                        <i class="material-icons" style="color: rgb(255, 255, 255);">more_vert</i>
-                    </md-button>
-                </div>
-            </md-toolbar>
-        </div>
+                        <md-button class="md-icon-button" aria-label="More">
+                            <i class="material-icons" style="color: rgb(255, 255, 255);">more_vert</i>
+                        </md-button>
+                    </div>
+                </md-toolbar>
+            </div>
 
 
-    </section>
-
+        </section>
+    </div>
+    <md-content layout="column" flex >
+        <div ui-view flex layout="row" layout-align="center" layout-padding="" class="content"></div>
+    </md-content>
 </div>
-<div layout="row" flex layout-align="center" layout-fill>
-    <div ui-view flex="90" class="content"></div>
-    <md-button class="md-primary md-fab md-fab-bottom-right">
-        <i class="material-icons" style="color: rgb(255, 255, 255);">add</i>
-    </md-button>
-</div>
-
-
 </body>
 </html>

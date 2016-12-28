@@ -1,4 +1,3 @@
-<h2>User List</h2>
 <md-item ng-repeat="user in users" class="item"
          ng-class="{ 'selected-item': $index == selectedUserIndex}">
     <md-item-content class="user tile md-whiteframe-z1"
@@ -40,3 +39,28 @@
     </md-item-content>
     <md-divider class="divider-inset" ng-if="!$last"></md-divider>
 </md-item>
+
+<div style="position: absolute;
+  bottom: 5px;
+  right : 5px;">
+    <div flex>
+        <md-fab-speed-dial md-open="false" md-direction="up" ng-class="'md-scale'">
+            <md-fab-trigger>
+                <md-button aria-label="menu" class="md-fab md-warn" >
+                    <md-icon class="material-icons">menu</md-icon>
+                </md-button>
+            </md-fab-trigger>
+            <md-fab-actions>
+                <md-button aria-label="Twitter" class="md-fab md-raised md-mini">
+                    <md-icon class="material-icons" aria-label="Twitter">format_list_bulleted</md-icon>
+                </md-button>
+                <md-button aria-label="Facebook" class="md-fab md-raised md-mini">
+                    <md-icon class="material-icons" aria-label="Facebook">insert_chart</md-icon>
+                </md-button>
+                <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini">
+                    <md-icon class="material-icons" aria-label="Google Hangout">face</md-icon>
+                </md-button>
+            </md-fab-actions>
+        </md-fab-speed-dial>
+    </div>
+</div>

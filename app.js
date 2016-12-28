@@ -15,7 +15,7 @@ app.run(
     ['$rootScope', '$state', '$stateParams',
         function ($rootScope, $state, $stateParams) {
 
-
+            $rootScope.pageTitle = 'Home';
             $rootScope.$state = $state;
             $rootScope.$stateParams = $stateParams;
             $rootScope.appTitle = 'Angularplate Material';

@@ -1,6 +1,10 @@
-app.controller('navCtrl', function ($scope, $state, $timeout, $mdSidenav, $mdDialog, $mdToast, $log, authSvc) {
+app.controller('navCtrl', function ($scope, $rootScope, $state, $timeout, $mdSidenav, $mdDialog, $mdToast, $log, authSvc) {
+    $scope.state = $rootScope.pageTitle;
+    $rootScope.$watch('pageTitle', function (nval) {
+        $scope.state = nval;
+    });
     var originatorEv;
-    $scope.state = 'Home';
+    // $scope.state = 'Home';
     $scope.toggleRight = buildToggler('sidenavLeft');
     $scope.isOpenRight = function () {
         return $mdSidenav('sidenavLeft').isOpen();
@@ -129,6 +133,7 @@ app.controller('navCtrl', function ($scope, $state, $timeout, $mdSidenav, $mdDia
     ];
 })
     .controller('RightCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+
         $scope.close = function () {
             // Component lookup should always be available since we are not using `ng-if`
             $mdSidenav('sidenavLeft').close()

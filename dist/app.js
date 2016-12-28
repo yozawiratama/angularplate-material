@@ -15,7 +15,7 @@ app.run(
     ['$rootScope', '$state', '$stateParams',
         function ($rootScope, $state, $stateParams) {
 
-
+            $rootScope.pageTitle = 'Home';
             $rootScope.$state = $state;
             $rootScope.$stateParams = $stateParams;
             $rootScope.appTitle = 'Angularplate Material';
@@ -101,19 +101,25 @@ app.run(
 
 
 
-app.controller('homeAbstractCtrl', ['$scope', '$state', 'homeSvc',
-    function ($scope, $state, homeSvc) {
+app.controller('homeAbstractCtrl', ['$scope', '$rootScope','$state', 'homeSvc',
+    function ($scope, $rootScope,$state, homeSvc) {
+
         $scope.say = homeSvc.Intro();
     }
 ])
-    .controller('homeIndexCtrl', ['$scope', '$state', 'homeSvc',
-        function ($scope, $state, homeSvc) {
+    .controller('homeIndexCtrl', ['$scope', '$rootScope','$state', 'homeSvc',
+        function ($scope, $rootScope, $state, homeSvc) {
+            $rootScope.pageTitle = 'Home';
             $scope.say = homeSvc.Intro();
         }
     ]);
-app.controller('navCtrl', function ($scope, $state, $timeout, $mdSidenav, $mdDialog, $mdToast, $log, authSvc) {
+app.controller('navCtrl', function ($scope, $rootScope, $state, $timeout, $mdSidenav, $mdDialog, $mdToast, $log, authSvc) {
+    $scope.state = $rootScope.pageTitle;
+    $rootScope.$watch('pageTitle', function (nval) {
+        $scope.state = nval;
+    });
     var originatorEv;
-    $scope.state = 'Home';
+    // $scope.state = 'Home';
     $scope.toggleRight = buildToggler('sidenavLeft');
     $scope.isOpenRight = function () {
         return $mdSidenav('sidenavLeft').isOpen();
@@ -242,6 +248,7 @@ app.controller('navCtrl', function ($scope, $state, $timeout, $mdSidenav, $mdDia
     ];
 })
     .controller('RightCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+
         $scope.close = function () {
             // Component lookup should always be available since we are not using `ng-if`
             $mdSidenav('sidenavLeft').close()
@@ -344,8 +351,10 @@ angular.module('module.user', [
                     .state('user.list', {
                         url: '',
                         templateUrl: 'views/user/list.html',
-                        controller: ['$scope', '$state',
-                            function ($scope, $state) {
+                        controller: ['$scope', '$rootScope','$state',
+                            function ($scope, $rootScope,$state) {
+                                $rootScope.pageTitle = 'User List';
+                                console.log($rootScope.pageTitle);
                                 $scope.users = [
                                     {
                                         name: { first: 'Yoza', last:'Wiratama' },
@@ -358,7 +367,12 @@ angular.module('module.user', [
                                     {
                                         name: { first: 'Kailan', last:'Batrisyia' },
                                         job : 'Engineer'
-                                    }];
+                                    },
+                                    {
+                                        name: { first: 'Leung', last:'Arashi' },
+                                        job : 'Programmer'
+                                    }
+                                ];
 
 
                                 $scope.selectedUserIndex = undefined;
