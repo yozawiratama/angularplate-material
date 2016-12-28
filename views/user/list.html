@@ -1,50 +1,60 @@
-<md-item ng-repeat="user in users" class="item"
-         ng-class="{ 'selected-item': $index == selectedUserIndex}">
-    <md-item-content class="user tile md-whiteframe-z1"
-                     ng-class="{ 'selected md-whiteframe-z2': $index == selectedUserIndex}"
-                     layout="column">
-        <div layout="row" ng-click="selectUserIndex($index)" class="folded">
-            <div class="md-tile-left">
-                <img ng-src="{{ user.face }}" class="face">
-            </div>
-            <div class="md-tile-content" layout="column" layout-align="center start">
-                <h3>{{ user.name.first + " " + user.name.last }}</h3>
-                <p ng-hide="$index == selectedUserIndex">
-                    <span>{{ user.job }}</span>
-                </p>
-            </div>
-        </div>
-        <md-divider  ng-show="$index == selectedUserIndex"></md-divider>
-        <div layout="column" layout-padding class="expanded">
-            <md-content layout-gt-sm="row" layout-padding>
-                <form name="projectForm">
-                    <md-input-container>
-                        <label>First Name</label>
-                        <input ng-model="user.name.first">
-                    </md-input-container>
+<md-content layout="column" flex layout-fill>
+    <div flex layout-align="center" style="padding-left: 15px; padding-right: 15px;" class="content">
+        <h4 class="md-subtitle">Featured Users</h4>
+        <md-item ng-repeat="user in users" class="item"
+                 ng-class="{ 'selected-item': $index == selectedUserIndex}">
+            <md-item-content class="user tile md-whiteframe-z1"
+                             ng-class="{ 'selected md-whiteframe-z2': $index == selectedUserIndex}"
+                             layout="column">
+                <div layout="row" ng-click="selectUserIndex($index)" class="folded">
+                    <div class="md-tile-left">
+                        <img ng-src="{{ user.face }}" class="face">
+                    </div>
+                    <div class="md-tile-content" layout="column" layout-align="center start">
+                        <h3 style="margin-bottom: 5px;margin-top: 5px;">{{ user.name.first + " " + user.name.last }}</h3>
+                        <p style="margin: 0" ng-hide="$index == selectedUserIndex">
+                            <span>{{ user.job }}</span>
+                        </p>
+                    </div>
+                </div>
+                <md-divider  ng-show="$index == selectedUserIndex"></md-divider>
+                <div layout="column" layout-padding class="expanded">
+                    <md-content layout-gt-sm="row" layout-padding>
+                        <form name="projectForm">
+                            <md-input-container>
+                                <label>First Name</label>
+                                <input ng-model="user.name.first">
+                            </md-input-container>
 
-                    <md-input-container>
-                        <label>Last Name</label>
-                        <input ng-model="user.name.last" type="text">
-                    </md-input-container>
+                            <md-input-container>
+                                <label>Last Name</label>
+                                <input ng-model="user.name.last" type="text">
+                            </md-input-container>
 
-                    <md-input-container class="md-block">
-                        <label>Bio</label>
-                        <input md-maxlength="30" required md-no-asterisk name="description" ng-model="user.bio">
-                    </md-input-container>
-                    <md-button type="submit" class="md-raised md-primary">Save Changes</md-button>
-                </form>
-            </md-content>
-        </div>
-    </md-item-content>
-    <md-divider class="divider-inset" ng-if="!$last"></md-divider>
-</md-item>
+                            <md-input-container class="md-block">
+                                <label>Bio</label>
+                                <input md-maxlength="30" required md-no-asterisk name="description" ng-model="user.bio">
+                            </md-input-container>
+                            <md-button type="submit" class="md-raised md-primary">Save Changes</md-button>
+                        </form>
+                    </md-content>
+                </div>
+            </md-item-content>
+            <md-divider class="divider-inset" ng-if="!$last"></md-divider>
+        </md-item>
+    </div>
+</md-content>
+
+
 
 <div style="position: absolute;
-  bottom: 5px;
-  right : 5px;">
+  bottom: 15px;
+  right : 15px;">
     <div flex>
-        <md-fab-speed-dial md-open="false" md-direction="up" ng-class="'md-scale'">
+        <md-fab-speed-dial
+                md-open="isMenuOpen" md-direction="up" ng-class="'md-scale'"
+                ng-mouseenter="isMenuOpen=true"
+                ng-mouseleave="isMenuOpen=false">
             <md-fab-trigger>
                 <md-button aria-label="menu" class="md-fab md-warn" >
                     <md-icon class="material-icons">menu</md-icon>

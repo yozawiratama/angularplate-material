@@ -22,6 +22,7 @@ angular.module('module.user', [
                         controller: ['$scope', '$rootScope','$state',
                             function ($scope, $rootScope,$state) {
                                 $rootScope.pageTitle = 'User List';
+                                $scope.isMenuOpen = false;
                                 console.log($rootScope.pageTitle);
                                 $scope.users = [
                                     {
